@@ -75,4 +75,30 @@ Tests are scaffolded using [Jest](https://facebook.github.io/jest/docs/en/gettin
 ### Extra Questions
 
 * If the endpoint required authentication, how would you consider implementing this?
+  
+  Asuming the api is using jwt tokens, here is how I would Implement it:
+  1. The user sends an Authentication request to the server to get a jwt token. The token contains a payload which along with other data, mostly a has unique id that will uniquely identify logged user on the server.
+  2. The user stores this token in localSorage or cookie.
+  3. The user adds the token in the request header to authorize the user on the requested endpoint.
+  e.g Asuming the token key is **x-auth-token**,  Creating new user request would look someting like this using axios:
+  ```javascript
+
+  axios.post(`${SERVER_URL}`, { ...newUserData } ,
+      {
+        headers: {
+          "Content-type": "application/json",
+          "x-auth-token": localStorage.getItem("token")
+        }
+      }
+  );
+  
+  ```
+
+  
+
 * What if we wanted the UI to update based on changes from the server?
+  
+  In order to update the UI based on the changes from the server, We can use state maangement apis, e.g. **Redux** or **React Context API** along with **useContext**, **usereducer** hooks.
+  If your application has to be constantly powered by new data from server you can think about using something like **RethinkDB**, **Firebase** or any other realtime pubsub system on your backend and connect it to your Flux store on your frontend.
+
+
