@@ -8,7 +8,7 @@
 
 .App-header {
   background-color: rgb(0, 184, 222);
-  height: 150px;
+  height: 190px;
   padding: 20px;
   color: white;
 }
@@ -19,4 +19,26 @@
 
 .App-intro {
   font-size: large;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+  background-color: rgb(223, 245, 250);
+}
+
+.table-striped > tbody > tr > td {
+  text-align: left;
+  color: #666;
+}
+
+th {
+  background-color: rgb(0, 184, 222);
+  color: white;
+}
+
+.kyruus-text-color {
+  color: #666;
+}
+
+.kyruus-bg-color {
+  background-color: rgb(0, 184, 222);
 }
