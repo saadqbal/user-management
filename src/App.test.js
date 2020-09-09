@@ -1,8 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+test('App renders without crashing', async () => {
+  const { getByText, findByText } = render(<App />);
+  // check to see if the Users List is loaded
+  const testCase = 'Loading...';
+  await waitFor(() => findByText(testCase))
+  const email = screen.getByText(testCase)
+  expect(email.textContent).toBe(testCase)
 });
+
+
